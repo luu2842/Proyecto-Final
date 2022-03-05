@@ -1,0 +1,5 @@
+package com.ibm.academia.restapi.fraudes.modelos.entidades;
+
+public class Paises {
+
+}

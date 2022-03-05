@@ -1,0 +1,30 @@
+package com.ibm.academia.restapi.fraudes.servicios;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+
+import com.ibm.academia.restapi.fraudes.modelos.entidades.hola;
+
+public interface HolaServiceI {
+	/**
+	 * Buscar comentarios con exchange.
+	 *
+	 * @return the response entity
+	 */
+	ResponseEntity<List<hola>> buscarComentariosConExchange();
+
+	/**
+	 * Buscar comentarios con fonr entity.
+	 *
+	 * @return the response entity
+	 */
+	List<hola> buscarComentariosConForEntity();
+
+	/**
+	 * Buscar comentarios con for object.
+	 *
+	 * @return the list
+	 */
+	List<hola> buscarComentariosConForObject();
+}

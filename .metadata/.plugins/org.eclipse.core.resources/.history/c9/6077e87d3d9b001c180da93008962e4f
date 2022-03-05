@@ -1,0 +1,8 @@
+package com.ibm.academia.restapi.fraudes.servicios;
+
+import com.ibm.academia.restapi.fraudes.modelos.entidades.Paises;
+
+
+public interface PaisesServiceI {
+	public Paises findPaisesByIp(String ip);
+}

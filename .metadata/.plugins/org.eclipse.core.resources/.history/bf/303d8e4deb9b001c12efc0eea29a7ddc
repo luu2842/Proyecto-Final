@@ -1,0 +1,69 @@
+package com.ibm.academia.restapi.fraudes.controladores;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ibm.academia.restapi.fraudes.servicios.HolaService;
+
+@RestController
+public class HolaController {
+	
+	@GetMapping("/holis")
+	public String hola(){
+		return "holaholahola";
+	}
+	
+	@Autowired
+
+	private HolaService openPlaceHolderService;
+
+	
+	/**
+	 * Buscar comentarios con exchange.
+	 *
+	 * @return the response entity
+	 */
+	@GetMapping(path = "/buscarComentariosConExchange", 
+			produces = { MediaType.APPLICATION_JSON_VALUE,
+						 MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<com.ibm.academia.restapi.fraudes.modelos.entidades.hola>> buscarComentariosConExchange() {
+		
+		return openPlaceHolderService.buscarComentariosConExchange();
+	}
+
+	
+	/**
+	 * Buscar comentarios con for entity.
+	 *
+	 * @return the response entity
+	 */
+	@GetMapping(path="/buscarComentariosConForEntity", 
+			produces = { MediaType.APPLICATION_JSON_VALUE,
+					 	 MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<com.ibm.academia.restapi.fraudes.modelos.entidades.hola>> buscarComentariosConForEntity() {
+		
+
+		return new ResponseEntity<>(openPlaceHolderService.buscarComentariosConForEntity(), HttpStatus.OK);
+	}
+	
+	/**
+	 * Buscar comentarios con for object.
+	 *
+	 * @return the response entity
+	 */
+	@GetMapping(path="/buscarComentariosConForObject", 
+			produces = { MediaType.APPLICATION_JSON_VALUE,
+					 	 MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<List<com.ibm.academia.restapi.fraudes.modelos.entidades.hola>> buscarComentariosConForObject() {
+		
+
+		return new ResponseEntity<>(openPlaceHolderService.buscarComentariosConForObject(), HttpStatus.OK);
+	}
+
+}

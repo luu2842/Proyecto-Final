@@ -1,0 +1,12 @@
+package com.ibm.academia.restapi.fraudes.servicios;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+
+import com.ibm.academia.restapi.fraudes.modelos.entidades.Paises;
+
+
+public interface PaisesServiceI {
+	ResponseEntity<List<Paises>> buscarPaisesPorIp(String ip);
+}

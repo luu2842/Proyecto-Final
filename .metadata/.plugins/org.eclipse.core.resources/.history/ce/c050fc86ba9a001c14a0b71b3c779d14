@@ -1,0 +1,8 @@
+package com.ibm.academia.restapi.fraudes.clientes;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(name = "api-ip2country", url = "https://api.ip2country.info/")
+public interface Ip2countryREST {
+
+}

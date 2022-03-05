@@ -1,0 +1,15 @@
+package com.ibm.academia.restapi.fraudes.clientes;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.ibm.academia.restapi.fraudes.modelos.dtos.CountryResponseDto; 
+ 
+@FeignClient(value = "country", url = "https://api.ip2country.info/")
+public interface CountryClient {
+ 
+   @RequestMapping(method = RequestMethod.GET, value = "/ip?{ipsend}", produces = "application/json")
+   CountryResponseDto getInfo(@PathVariable("ipsend") String ipsend );
+  
+}

@@ -1,0 +1,5 @@
+package com.ibm.academia.restapi.fraudes.servicios;
+
+public interface PaisesServiceI {
+
+}

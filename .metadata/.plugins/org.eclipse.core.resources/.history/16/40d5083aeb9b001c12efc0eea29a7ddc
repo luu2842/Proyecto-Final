@@ -1,0 +1,94 @@
+package com.ibm.academia.restapi.fraudes.servicios;
+
+import java.io.IOException;
+import java.net.http.HttpRequest;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMessage;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpRequestExecution;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.ibm.academia.restapi.fraudes.modelos.entidades.hola;
+
+@Service
+public class HolaService implements HolaServiceI {
+	/** The rest template. */
+	@Autowired
+	private RestTemplate restTemplate;
+
+	/**
+	 * Buscar comentarios con exchange.
+	 *
+	 * @return the response entity
+	 */
+	@Override
+	public ResponseEntity<List<hola>> buscarComentariosConExchange() {
+
+		HttpHeaders headers = new HttpHeaders();
+
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+
+		HttpEntity<hola> entity = new HttpEntity<>(headers);
+
+		ResponseEntity<List<hola>> response = restTemplate.exchange(
+				"https://jsonplaceholder.typicode.com/comments", HttpMethod.GET, entity,
+				new ParameterizedTypeReference<List<hola>>() {
+				});
+
+		return new ResponseEntity<>(response.getBody(), HttpStatus.OK);
+	}
+
+
+	/**
+	 * Buscar comentarios con for object.
+	 *
+	 * @return the list
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<hola> buscarComentariosConForObject() {
+
+		List<hola> response = restTemplate.getForObject("https://jsonplaceholder.typicode.com/comments",
+				List.class);
+
+		List<hola> object = response;
+
+		return object;
+	}
+
+
+	@Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<hola> buscarComentariosConForEntity() {
+
+			restTemplate.getInterceptors().add(new ClientHttpRequestInterceptor() {
+
+				@Override
+				public ClientHttpResponse intercept(org.springframework.http.HttpRequest request, byte[] body,
+						ClientHttpRequestExecution execution) throws IOException {
+					// TODO Auto-generated method stub
+					return null;
+				}
+			});
+
+			ResponseEntity<List> response = restTemplate.getForEntity("https://jsonplaceholder.typicode.com/comments",
+					List.class);
+
+			List<hola> object = response.getBody();
+
+			return object;
+	}
+}

@@ -1,0 +1,14 @@
+package com.ibm.academia.restapi.fraudes.controladores;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HolaController {
+	
+	@GetMapping("/holis")
+	public String hola(){
+		return "holaholahola";
+	}
+
+}

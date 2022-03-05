@@ -1,0 +1,9 @@
+package com.ibm.academia.restapi.fraudes.servicios;
+
+import com.ibm.academia.restapi.fraudes.modelos.dtos.IpDto;
+
+public interface CountryServiceI {
+	
+	public IpDto getinfo(String ip);
+
+}
