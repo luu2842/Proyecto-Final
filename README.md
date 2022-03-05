@@ -1,7 +1,11 @@
 # Proyecto-Final
 Endpoint:
 http://localhost:9001/api/v1/rest-fraudes/ip
-
+Body
+Json
+{
+    "ip":"3.6.9.3"
+}
 
 ![image](https://user-images.githubusercontent.com/63013197/156869240-bc51879c-66f3-4953-852a-90fcb0a6cc44.png)
 ![image](https://user-images.githubusercontent.com/63013197/156869261-66a9c075-711d-4303-8f3c-13ce1caa1f6b.png)
